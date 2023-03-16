@@ -1,0 +1,168 @@
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+// // variable scope: in css =>
+// // globale Variable --> Farben in root, vefügbar für alle
+// // lokale Variable --> --button-color:..., die Farbe ist dann nur für button reservieren
+// :root {
+//   --orange: orange;
+//   --blue: blue;
+// }
+// h2 {
+//   border-bottom: 2px solid var(--orange);
+//   background-color: var(--button-color);
+// }
+// .box {
+//   color: var(--blue);
+// }
+// button {
+//   --button-color: #f97316;
+// }
+// // 2. var(--name: fallback)
+// .box {
+//   background-color: var(--a, #ccc);
+// }
+// .special {
+//   --a: #f90;
+// }
+// // 3. SASS
+// global
+$color: #5355567e;
+$myFontSize: 18px;
+$myWidth: 400px;
+$size: 1em;
+$font-color: rgb(34, 14, 255);
+
+$colors: (
+  main: yellow,
+  second: brown,
+);
+
+$border-default: 10px solid map-get($colors, second);
+
+body {
+  background-color: $bg-color;
+  font-size: $myFontSize;
+}
+
+#container {
+  margin: $size * 3;
+}
+
+// 4.
+p {
+  $color: rgb(33, 200, 27) !global;
+}
+
+span {
+  color: $color;
+}
+
+// 5.
+// schreiben wir so nicht mehr:
+// .myClass li {
+//   list-style: none;
+// }
+
+.myClass {
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    list-style: none;
+    background-color: aqua;
+  }
+
+  &:hover li {
+    background-color: black;
+  }
+}
+
+// 6.
+
+.nested {
+  background-color: green;
+
+  p {
+    color: white;
+  }
+}
+
+// 7.
+nav {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    margin: 10px;
+    text-decoration: none;
+    color: $font-color;
+  }
+}
+
+// 8.
+// in CSS:
+// .example-1 {
+//   font-size: 1rem;
+//   transition-property: font-size;
+//   transition-duration: 1s;
+//   transition-delay: 2s;
+// }
+
+// .example-1:hover {
+//   font-size: 2rem;
+// }
+
+.example-1 {
+  font-size: 1rem;
+  transition: {
+    property: font-size;
+    duration: 1;
+    delay: 2s;
+  }
+
+  &:hover {
+    font-size: 2rem;
+  }
+}
+
+// 9.
+
+// .container {
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: nowrap;
+// }
+
+.container {
+  display: flex;
+  flex: {
+    direction: column;
+    wrap: nowrap;
+  }
+  align-items: center;
+  padding: 10px;
+}
+
+// 10.
+
+.example3 {
+  font: {
+    family: Helvetica, sans-serif;
+    size: 19px;
+    weight: bold;
+  }
+}
+
+.example4 {
+  text: {
+    align: center;
+    transform: lowercase;
+    overflow: hidden;
+  }
+}
+
+// 11.
+// @IMPORT and @EXTEND and MIXIN and PARTIAL
